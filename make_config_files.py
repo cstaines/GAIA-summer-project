@@ -18,6 +18,8 @@ for l in xrange(30):
     with open("config_files/RECONS_config_file_{0}.cfg".format(l + 1), "w") as fout:
         fout.write("[observations]\nn_obs = 50\n[system]\n")
         fout.write("name = RECONS_gaia_test_{0}\n".format(l + 1))
+        #Print stellar distance and number of planets
+        fout.write("distance = {0}\n".format(stars[l][2]))
         fout.write("n_planets = {0}\n".format(n_planets))
         for m in xrange(n_planets):
             fout.write("planet{0} = ".format(m + 1))
