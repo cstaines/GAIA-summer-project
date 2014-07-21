@@ -4,6 +4,8 @@
 from math import log
 import numpy as np
 
+n_planets = 1 #Couldn't find a way in which you'd only have to declare this in one script
+config_array = np.zeros((n_planets, 7), float)
 #Get star & planet data
 with open("seeds/RECONS_stars.txt", "r") as f1:
     stars = np.loadtxt(f1)
@@ -16,10 +18,12 @@ for l in xrange(30):
     with open("config_files/RECONS_config_file_{0}.cfg".format(l + 1), "w") as fout:
         fout.write("[observations]\nn_obs = 50\n[system]\n")
         fout.write("name = RECONS_gaia_test_{0}\n".format(l + 1))
-        fout.write("n_planets = 1\nplanet = ")
-        config_array = np.array([log(365.25*planets[l][0]), log((9.542e-4)*planets[l][1]/stars[l][1]),
-                    planets[l][2], planets[l][3], planets[l][4], planets[l][5], planets[l][6]])
-        np.savetxt(fout, config_array.reshape(1, 7), fmt = "%.2f")
+        fout.write("n_planets = {0}\n".format(n_planets))
+        for m in xrange(n_planets):
+            fout.write("planet{0} = ".format(m + 1))
+            config_array[m] = [log(365.25*planets[l+m][0]), log((9.542e-4)*planets[l+m][1]/stars[l][1]),
+                        planets[l+m][2], planets[l+m][3], planets[l+m][4], planets[l+m][5], planets[l+m][6]]
+            np.savetxt(fout, config_array[m].reshape(1, 7), fmt = "%.2f")
                 
         
         
