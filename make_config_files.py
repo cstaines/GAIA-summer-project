@@ -23,7 +23,7 @@ for line in stars[::-1]:
     else:
         break
 
-#Choose 30 random stars now that all of the stars have S/N > 100
+#Choose 30 random stars now that we know which stars have S/N > 100
 indices = np.random.randint(too_low, size = 30)
 
 chosen_stars = []
