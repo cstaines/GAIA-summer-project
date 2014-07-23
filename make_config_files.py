@@ -49,7 +49,7 @@ for l in xrange(30):
         fout.write("distance = {0}\n".format(chosen_stars[l][2]))
         fout.write("n_planets = {0}\n".format(n_planets))
         for m in xrange(n_planets):
-            fout.write("planet{0} = ".format(m + 1))
+            fout.write("planet_{0} = ".format(m + 1))
             np.savetxt(fout, np.array([log(365.25*(2 + 3*params[l+m][0])),
                               log(9.542e-4*((0.5 + 1.5*params[l+m][0])/chosen_stars[l][1])),
                               params[l+m][2], 2*pi*params[l+m][3], 2*pi*params[l+m][4],
