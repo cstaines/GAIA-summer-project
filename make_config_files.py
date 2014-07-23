@@ -43,7 +43,7 @@ params = np.random.rand(30*n_planets, 7)
 #3. Save the parameters to config files.
 for l in xrange(30):
     with open("config_files/RECONS_config_file_{0}.cfg".format(l + 1), "w") as fout:
-        fout.write("[observations]\nn_obs = 50\n[system]\n")
+        fout.write("observations\nn_obs = 50\nsystem\n")
         fout.write("name = RECONS_gaia_test_{0}\n".format(l + 1))
         #Print stellar distance and number of planets
         fout.write("distance = {0}\n".format(chosen_stars[l][2]))
