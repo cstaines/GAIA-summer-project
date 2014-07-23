@@ -3,7 +3,8 @@ GAIA-summer-project
 
 make_config_files.py: Creates config files with which to run the NEAT code.
 
-sorted_lists/: contains list of RECONS stars in descending S/N
+sorted_lists/: contains list of RECONS stars in descending S/N.
 
-config_files/: contains files with which Hannu's NEAT code can be run
+config_files/: contains files with which Hannu's NEAT code can be run.
 
+test_data/: contains test data sets created from the configuration files.
