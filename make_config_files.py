@@ -38,7 +38,6 @@ n_planets = 1
 
 #Fill an array of the desired size with random numbers between 0 and 1
 #These will become the planet parameters
-np.random.seed(1)
 params = np.random.rand(30*n_planets, 7)
 
 #3. Save the parameters to config files.
