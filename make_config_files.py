@@ -45,9 +45,12 @@ for l in xrange(30):
     with open("config_files/RECONS_config_file_{0}.cfg".format(l + 1), "w") as fout:
         fout.write("[observations]\nn_obs = 50\n[system]\n")
         fout.write("name = RECONS_gaia_test_{0}\n".format(l + 1))
-        #Print stellar distance and number of planets
+        #Print stellar distance, stellar mass,
+        #astrometric noise and number of planets.
+        #Get astrometric noise by dividing signal by signal-to-noise ratio
         fout.write("distance = {0}\n".format(chosen_stars[l][2]))
         fout.write("mass = {0}\n".format(chosen_stars[l][1]))
+        fout.write("am_noise = {0}\n".format(1e-6*chosen_stars[l][-2]/chosen_stars[l][-1]))
         fout.write("n_planets = {0}\n".format(n_planets))
         for m in xrange(n_planets):
             fout.write("planet_{0} = ".format(m + 1))
