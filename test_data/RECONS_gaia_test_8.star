@@ -1,0 +1,1 @@
+stellar mass:   0.26
