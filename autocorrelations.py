@@ -9,9 +9,9 @@ import pyfits as pf
 import numpy as np
 import matplotlib.pyplot as plt
 
-def plot_autos(inp_array, name, ind):
-    plt.subplot(2, 2, ind+1)
-    plt.plot(inp_array[name])
+def plot_autos(inp_array, name, ind, ind2):
+    plt.subplot(2, 2, ind2 + 1)
+    plt.plot(inp_array[ind])
     plt.title(name)
     plt.show()
     
@@ -29,11 +29,11 @@ for i in xrange(30):
         if i < 4:
             plt.figure(0)
             plt.suptitle('Autocorrelations')
-            plot_autos(cat, col, i)
+            plot_autos(cat, col, i, i)
         else:
             plt.figure(1)
             plt.suptitle('Autocorrelations')
-            plot_autos(cat, col, i-4)
+            plot_autos(cat, col, i, i-4)
 
 
             
