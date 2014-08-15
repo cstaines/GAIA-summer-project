@@ -22,7 +22,6 @@ for i in xrange(30):
     for col in names:
         autocorrs.append(np.correlate(cat[col], cat[col], mode='full'))
 
-The following is if mode=full needs to be appended to the above line
         if j % 4 == 0:
             plt.figure(1+int(floor(j/4)))
             plt.suptitle('Autocorrelations')
