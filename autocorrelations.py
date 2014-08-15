@@ -19,7 +19,7 @@ def plot_autos(inp_array, name, ind):
 autocorrs = []
 
 for i in xrange(30):
-    hdus = pf.open('RECONS_0_planets/RECONS_gaia_test_{0}'.format(i+1))
+    hdus = pf.open('RECONS_0_planets/RECONS_gaia_test_{0}.fits'.format(i+1))
     names = hdus[1].columns.names
     cols = [hdus[1].data.field(col) for col in names]
     cat = np.rec.fromarrays(cols, names=names)
