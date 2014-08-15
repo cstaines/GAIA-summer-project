@@ -29,12 +29,12 @@ for i in xrange(30):
             
         plt.subplot(2, 2, 1+(j%4))
         plt.plot(autocorrs[-1])
-        plt.xticks([0, 160000])
+        plt.xticks([0, 8000, 160000])
         plt.title(col)
 
-        if j % 4 == 0:
+        if j+1 % 4 == 0:
             plt.show()
-            #plt.savefig('autocorrelations/autocorrs_{0}.pdf'.format(1+int(floor(j/4))))
+            plt.savefig('autocorrelations/star{0}/autocorrs_{1}.pdf'.format(i+1, 1+int(floor(j/4))))
         
         j += 1
 
