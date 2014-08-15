@@ -9,13 +9,6 @@ import pyfits as pf
 import numpy as np
 import matplotlib.pyplot as plt
 from math import floor
-
-def plot_autos(inp_array, name, ind, ind2):
-    plt.subplot(2, 2, ind2 + 1)
-    plt.plot(inp_array[ind])
-    plt.title(name)
-    plt.show()
-    
     
 autocorrs = []
 
@@ -40,7 +33,8 @@ for i in xrange(30):
         plt.title(col)
 
         if j % 4 == 0:
-            plt.savefig('autocorrelations/autocorrs_{0}.pdf'.format(1+int(floor(j/4))))
+            plt.show()
+            #plt.savefig('autocorrelations/autocorrs_{0}.pdf'.format(1+int(floor(j/4))))
         
         j += 1
 
