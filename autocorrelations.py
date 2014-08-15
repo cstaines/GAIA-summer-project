@@ -34,7 +34,7 @@ for i in xrange(30):
         plt.xticks([0, 80000, 160000])
         plt.title(col)
 
-        if (j+1) % 4 == 0:
+        if j in [3, 7, 8]:
             if show:
                 plt.show()
             else:
