@@ -22,4 +22,5 @@ for i in xrange(30):
         plt.suptitle('Autocorrelation function of '+col+'for RECONS star{0}'.format(i+1))
         ptp.autocorrelation_plot(cat[col])
         plt.savefig('autocorrelations/star{0}/autocorr_'.format(i+1)+col+'.pdf')
+        plt.close()
 
