@@ -29,11 +29,11 @@ for i in xrange(30):
         if i < 4:
             plt.figure(0)
             plt.suptitle('Autocorrelations')
-            plot_autos(autocorrs, col, i)
+            plot_autos(cat, col, i)
         else:
             plt.figure(1)
             plt.suptitle('Autocorrelations')
-            plot_autos(autocorrs, col, i-4)
+            plot_autos(cat, col, i-4)
 
 
             
