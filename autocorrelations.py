@@ -29,12 +29,19 @@ for i in xrange(30):
     
     for col in names:
         autocorrs.append(np.correlate(cat[col], cat[col], mode='full'))
-        plt.figure(1+int(floor(j/4)))
-        plt.suptitle('Autocorrelations')
+
+        if j % 4 == 0:
+            plt.figure(1+int(floor(j/4)))
+            plt.suptitle('Autocorrelations')
+            
         plt.subplot(2, 2, 1+(j%4))
         plt.plot(autocorrs[-1])
+        plt.xtics([0, 160000])
         plt.title(col)
-        plt.show()
+
+        if j % 4 == 0:
+            plt.savefig('autocorrelations/autocorrs_{0}.pdf'.format(1+int(floor(j/4)))
+        
         j += 1
 
 
