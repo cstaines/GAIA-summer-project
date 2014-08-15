@@ -8,6 +8,7 @@
 import pyfits as pf
 import numpy as np
 import matplotlib.pyplot as plt
+from math import floor
 
 def plot_autos(inp_array, name, ind, ind2):
     plt.subplot(2, 2, ind2 + 1)
@@ -24,16 +25,17 @@ for i in xrange(30):
     cols = [hdus[1].data.field(col) for col in names]
     cat = np.rec.fromarrays(cols, names=names)
 
-    for col, i in zip(names, range(len(names))):
+    j = 0
+    
+    for col in names:
         autocorrs.append(np.correlate(cat[col], cat[col], mode='full'))
-        if i < 4:
-            plt.figure(0)
-            plt.suptitle('Autocorrelations')
-            plot_autos(autocorrs, col, i, i)
-        else:
-            plt.figure(1)
-            plt.suptitle('Autocorrelations')
-            plot_autos(autocorrs, col, i, i-4)
+        plt.figure(1+int(floor(j/4)))
+        ply.suptitle('Autocorrelations')
+        plt.subplot(2, 2, j%4)
+        plt.plot(autocorrs[-1])
+        plt.title(col)
+        plt.show()
+        j += 1
 
 
             
