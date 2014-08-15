@@ -32,7 +32,6 @@ for i in xrange(30):
         plt.title(col)
 
         if (j+1) % 4 == 0:
-            plt.show()
             plt.savefig('autocorrelations/star{0}/autocorrs_{1}.pdf'.format(i+1, 1+int(floor(j/4))))
         
         j += 1
