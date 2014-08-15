@@ -9,8 +9,6 @@ import pyfits as pf
 import numpy as np
 import matplotlib.pyplot as plt
 from math import floor
-    
-autocorrs = []
 
 for i in xrange(30):
     hdus = pf.open('RECONS_0_planets/RECONS_gaia_test_{0}.fits'.format(i+1))
@@ -19,6 +17,7 @@ for i in xrange(30):
     cat = np.rec.fromarrays(cols, names=names)
 
     j = 0
+    autocorrs = []
     
     for col in names:
         autocorrs.append(np.correlate(cat[col], cat[col], mode='full'))
@@ -29,12 +28,12 @@ for i in xrange(30):
             
         plt.subplot(2, 2, 1+(j%4))
         plt.plot(autocorrs[-1])
-        plt.xticks([0, 8000, 160000])
+        plt.xticks([0, 80000, 160000])
         plt.title(col)
 
         if j+1 % 4 == 0:
             plt.show()
-            plt.savefig('autocorrelations/star{0}/autocorrs_{1}.pdf'.format(i+1, 1+int(floor(j/4))))
+            #plt.savefig('autocorrelations/star{0}/autocorrs_{1}.pdf'.format(i+1, 1+int(floor(j/4))))
         
         j += 1
 
