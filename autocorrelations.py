@@ -30,11 +30,10 @@ for i in xrange(30):
         plt.plot(autocorrs[-1])
         plt.xticks([0, 80000, 160000])
         plt.title(col)
-        plt.show()
 
         if (j+1) % 4 == 0:
             plt.show()
-            #plt.savefig('autocorrelations/star{0}/autocorrs_{1}.pdf'.format(i+1, 1+int(floor(j/4))))
+            plt.savefig('autocorrelations/star{0}/autocorrs_{1}.pdf'.format(i+1, 1+int(floor(j/4))))
         
         j += 1
 
