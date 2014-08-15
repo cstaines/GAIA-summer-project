@@ -40,7 +40,7 @@ for i in xrange(30):
         plt.title(col)
 
         if j % 4 == 0:
-            plt.savefig('autocorrelations/autocorrs_{0}.pdf'.format(1+int(floor(j/4))
+            plt.savefig('autocorrelations/autocorrs_{0}.pdf'.format(1+int(floor(j/4))))
         
         j += 1
 
