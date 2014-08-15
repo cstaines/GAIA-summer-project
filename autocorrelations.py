@@ -36,7 +36,7 @@ for i in xrange(30):
             
         plt.subplot(2, 2, 1+(j%4))
         plt.plot(autocorrs[-1])
-        plt.xtics([0, 160000])
+        plt.xticks([0, 160000])
         plt.title(col)
 
         if j % 4 == 0:
