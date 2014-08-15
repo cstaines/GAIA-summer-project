@@ -28,11 +28,11 @@ for i in xrange(30):
         autocorrs.append(np.correlate(cat[col], cat[col], mode='full'))
         if i < 4:
             plt.figure(0)
-            suptitle('Autocorrelations')
+            plt.suptitle('Autocorrelations')
             plot_autos(autocorrs, col, i)
         else:
             plt.figure(1)
-            suptitle('Autocorrelations')
+            plt.suptitle('Autocorrelations')
             plot_autos(autocorrs, col, i-4)
 
 
