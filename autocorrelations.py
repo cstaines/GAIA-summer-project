@@ -30,8 +30,8 @@ for i in xrange(30):
     for col in names:
         autocorrs.append(np.correlate(cat[col], cat[col], mode='full'))
         plt.figure(1+int(floor(j/4)))
-        ply.suptitle('Autocorrelations')
-        plt.subplot(2, 2, j%4)
+        plt.suptitle('Autocorrelations')
+        plt.subplot(2, 2, 1+(j%4))
         plt.plot(autocorrs[-1])
         plt.title(col)
         plt.show()
