@@ -1,26 +1,41 @@
 #This function generates and plots the autocorrelation function
 #for each parameter, for each star, for the 0 planet MCMC.
 
-#Use this in the 'GAIA-summer-project' directory.
-
 import pandas.tools.plotting as ptp
 import matplotlib.pyplot as plt
 import pyfits as pf
 import numpy as np
 
+#I was going to use oas.planetsearch's load_results function,
+#but it doesn't keep the header names...
+
 for i in xrange(30):
     
-    #Open the .fits file and store the data as a numpy record array
+    #Open the .fits file and store the data as a numpy array
+    #All lines except for the third below are from the aforementioned load_results function
     hdus = pf.open('RECONS_0_planets/RECONS_gaia_test_{0}.fits'.format(i+1))
-    names = hdus[1].columns.names
-    cols = [hdus[1].data.field(col) for col in names]
-    cat = np.rec.fromarrays(cols, names=names)
+    hdu = hdus[1]
+    names = hdu.columns.names
+    npop = hdu.header['pop_size']
+    npar = hdu.header['tfields'] - 1
+
+    #Get the parameters
+    ch = np.array([hdu.data[c] for c in hdu.columns.names[1:]]).T.reshape([npop, -1, npar])
+
+    hdus.close()
+
+    #4000 walkers - choose every 200th
+    wlkrs  = ch[::200]
+    counter = 0 #Might be a bit quicker than using 'index' function
 
     #Plot the autocorrelation of each column and save
-    for col in names:
-        plt.figure()
-        plt.suptitle('Autocorrelation function of '+col+'for RECONS star{0}'.format(i+1))
-        ptp.autocorrelation_plot(cat[col])
-        plt.savefig('autocorrelations/star{0}/autocorr_'.format(i+1)+col+'.pdf')
-        plt.close()
+    for l in wlkrs:
+        for j in xrange(8):
+            plt.figure()
+            plt.suptitle('Autocorrelation function of '+names[j]+', walker {0}, RECONS star{1}'.format(counter, i+1))
+            ptp.autocorrelation_plot(l[:,j])
+            plt.x
+            plt.savefig('autocorrelations/star{0}/walker{1}/autocorr_'.format(i+1,counter+1)+names[j]+'.pdf')
+            plt.close()
+        counter += 200
 
