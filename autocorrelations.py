@@ -36,5 +36,5 @@ for i in xrange(30):
             ptp.autocorrelation_plot(l[:,j])
             plt.savefig('autocorrelations/star{0}/walker{1}/autocorr_'.format(i+1,counter+1)+names[j]+'.pdf')
             plt.close()
-        counter += 200
+        counter += 20
 
