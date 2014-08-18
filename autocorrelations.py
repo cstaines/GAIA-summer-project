@@ -15,7 +15,7 @@ for i in xrange(30):
     #All lines except for the third below are from the aforementioned load_results function
     hdus = pf.open('RECONS_0_planets/RECONS_gaia_test_{0}.fits'.format(i+1))
     hdu = hdus[1]
-    names = hdu.columns.names
+    names = hdu.columns.names[1:]
     npop = hdu.header['pop_size']
     npar = hdu.header['tfields'] - 1
 
