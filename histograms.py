@@ -24,7 +24,7 @@ for i in xrange(30):
             plt.suptitle('Histogram of '+c+', star {0}, {1} planet(s)'.format(i+1, n_planets))
             plt.hist(np.array(hdu.data[c]), 20, normed = True)
             plt.xlabel(c)
-            plt.ylabel('Sample probability')
+            plt.ylabel('Sample probability density')
             plt.savefig('histograms/star{0}/n_planets{1}/histogram_'.format(i+1, n_planets)+c+'.pdf')
             plt.close()
 
