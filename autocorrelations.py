@@ -20,7 +20,7 @@ for i in xrange(30):
     npar = hdu.header['tfields'] - 1
 
     #Get the parameters
-    ch = np.array([hdu.data[c] for c in hdu.columns.names[1:]]).T.reshape([npop, -1, npar])
+    ch = np.array([hdu.data[c] for c in names]).T.reshape([npop, -1, npar])
 
     hdus.close()
 
@@ -32,7 +32,7 @@ for i in xrange(30):
     for l in wlkrs:
         for j in xrange(8):
             plt.figure()
-            plt.suptitle('Autocorrelation function of '+names[j]+', walker {0}, RECONS star{1}'.format(counter+1, i+1))
+            plt.suptitle('Autocorrelation function of '+names[j]+', walker {0}, RECONS star {1}'.format(counter+1, i+1))
             ptp.autocorrelation_plot(l[:,j])
             plt.savefig('autocorrelations/star{0}/walker{1}/autocorr_'.format(i+1,counter+1)+names[j]+'.pdf')
             plt.close()
