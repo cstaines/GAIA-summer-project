@@ -5,12 +5,13 @@ import matplotlib.pyplot as plt
 import pyfits as pf
 import numpy as np
 
-max_planets = 3 #Highest number of planets in .fits file
-
 for i in xrange(30):
 
     #Open the files
     hdus = pf.open('RECONS_gaia_tests/RECONS_gaia_test_{0}.fits'.format(i+1))
+
+    #Number of planets in file
+    max_planets = len(hdus) - 2
     
     for n_planets in range(1, max_planets+1): #Run until all n_planets processed
         hdu = hdus[n_planets+1]
