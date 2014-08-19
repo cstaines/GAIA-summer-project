@@ -21,7 +21,7 @@ for i in xrange(30):
         #Plot the histograms
         for c in names:
             plt.figure()
-            plt.suptitle('Histogram of '+c+', star {0), {1} planet(s)'.format(i+1, n_planets))
+            plt.suptitle('Histogram of '+c+', star {0}, {1} planet(s)'.format(i+1, n_planets))
             plt.hist(np.array(hdu.data[c]), 20, normed = True)
             plt.xlabel(c)
             ply.ylabel('Sample probability') #Ask Hannu
