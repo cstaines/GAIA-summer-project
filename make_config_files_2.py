@@ -5,7 +5,7 @@
 #1. Get the 30 stars
 
 import numpy as np
-from math import pi, log, floor
+from math import pi, log
 
 
 #Set the number of stars desired
@@ -36,13 +36,11 @@ for i in xrange(num_stars):
     chosen_stars.append(stars[indices[i]])
 
 #2. Get the planetary parameters.
-#Create a random number of planets, sampled from a Gaussian distribution, from each star.
+#Create a random number of planets, between 0 and 2 (for now) for each star.
 #If the result is negative then give that star 0 planets instead
     
-dist = np.random.normal(1.0, 2.0, num_stars).astype(int)
-n_planets = np.where(dist < 0, np.zeros(num_stars, int), dist) 
+dist = 2*np.random.randint(0, 3, num_stars)
 
-           
 #Fill an array of the desired size with random numbers between 0 and 1
 #These will become the planet parameters
 params = np.random.rand(sum(n_planets), 7)
