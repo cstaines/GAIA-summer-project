@@ -39,13 +39,17 @@ for i in xrange(num_stars):
 #Create a random number of planets, between 0 and 2 (for now) for each star.
 #If the result is negative then give that star 0 planets instead
     
-dist = 2*np.random.randint(0, 3, num_stars)
+n_planets = np.random.randint(0, 3, num_stars)
 
 #Fill an array of the desired size with random numbers between 0 and 1
 #These will become the planet parameters
 params = np.random.rand(sum(n_planets), 7)
 
+print np.shape(params)
+
 #3. Save the parameters to config files.
+j = 0 #Counter for params
+
 for l in xrange(num_stars):
     with open("config_files_2/RECONS_config_file_{0}.cfg".format(l + 1), "w") as fout:
         fout.write("[observations]\nn_obs = 50\n[system]\n")
@@ -59,10 +63,11 @@ for l in xrange(num_stars):
         fout.write("n_planets = {0}\n".format(n_planets[l]))
         for m in xrange(n_planets[l]):
             fout.write("planet_{0} = ".format(m + 1))
-            np.savetxt(fout, np.array([log(365.25*(2 + 3*params[l+m][0])),
-                              log(9.542e-4*((0.5 + 1.5*params[l+m][0])/chosen_stars[l][1])),
-                              params[l+m][2], 2*pi*params[l+m][3], 2*pi*params[l+m][4],
-                              pi*params[l+m][5], 2*pi*params[l+m][6]]).reshape(1, 7), fmt = "%.2f")
+            np.savetxt(fout, np.array([log(365.25*(2 + 3*params[j][0])),
+                              log(9.542e-4*((0.5 + 1.5*params[j][0])/chosen_stars[l][1])),
+                              params[j][2], 2*pi*params[j][3], 2*pi*params[j][4],
+                              pi*params[j][5], 2*pi*params[j][6]]).reshape(1, 7), fmt = "%.2f")
+            j += 1
         
     
 
