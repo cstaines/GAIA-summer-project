@@ -13,7 +13,7 @@ for i in xrange(30):
     
     #Open the .fits file and store the data as a numpy array
     #All lines except for the third below are from the aforementioned load_results function
-    hdus = pf.open('RECONS_0_planets/RECONS_gaia_test_{0}.fits'.format(i+1))
+    hdus = pf.open('RECONS_gaia_tests/RECONS_gaia_test_{0}.fits'.format(i+1))
     hdu = hdus[1]
     names = hdu.columns.names[1:]
     npop = hdu.header['pop_size']
